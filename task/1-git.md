@@ -12,7 +12,9 @@ xxx为代码库，本项目为git@github.com:euphonium1998/eupho-study.git
 
 `git clone`的代码默认在main分支上，各位需要创建一个新的分支xxx，这就是未来你写代码的分支，未来所有操作都将在xxx分支上进行。xxx自行命名，可以为你的名字或昵称。
 
-4.src/1/main.md文件下修改代码。在最下行随便写点东西。
+4.进行代码开发。
+
+在本次学习中请各位对src/1/main.md文件下代码进行修改。在最下行随便写点东西。
 
 5.`git pull <远程主机名> <远程分支名>:<本地分支名>`
 
@@ -30,9 +32,15 @@ xxx为代码库，本项目为git@github.com:euphonium1998/eupho-study.git
 
 将本地分支推到远程仓库对应分支，远程分支与本地分支名应该尽量相同，远程主机名也默认为`origin`
 
-9.进入github对应仓库页面，提交pull request。将自己的分支与main分支进行合并。
+如果推不上来，切记不要`git push -f`。谁这么做就请吃海底捞/doge。
+
+9.进入github对应仓库页面，提交pull request。将自己的分支与main分支进行合并。按照下方图片顺序。如果之前操作正常就不会出现冲突，如果出现冲突就比较麻烦了
 
 ![step 1](/img/step1.png)
+![step 2](/img/step2.png)
+![step 3](/img/step3.png)
+
+ps: 这就是最基本的分支开发流程，存在冲突也不用慌。最基本的方式就是再本地仓库手动解决冲突。或者重新clone一份代码进行编辑。希望大家可以避免产生分支冲突。
 
 
 
