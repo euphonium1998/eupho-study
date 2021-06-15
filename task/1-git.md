@@ -40,6 +40,8 @@ xxx为代码库，本项目为git@github.com:euphonium1998/eupho-study.git
 ![step 2](/img/step2.png)
 ![step 3](/img/step3.png)
 
+10.提交的pull request指定euphonium1998也就是蔡恭灿进行代码审查，由我作为组长进行代码审查，通过之后由组长合并进远程仓库。不可以自行合并进main分支。
+
 ps: 这就是最基本的分支开发流程，存在冲突也不用慌。最基本的方式就是再本地仓库手动解决冲突。或者重新clone一份代码进行编辑。希望大家可以避免产生分支冲突。
 
 
