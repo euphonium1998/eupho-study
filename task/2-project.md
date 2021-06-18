@@ -10,6 +10,19 @@ clone之后按照官方网站<https://panjiachen.gitee.io/vue-element-admin-site
 
 2.请clone该仓库代码<https://github.com/elunez/eladmin>
 
-该仓库为springboot开源项目，请按照官网<https://el-admin.vip/guide/ksks.html#%E5%90%8E%E7%AB%AF%E8%BF%90%E8%A1%8C-idea>进行后端配置即可，保证maven下载包正常，`pom.xml`文件没有出现红字出错即可。该仓库将在掌握springboot框架基础之后进行学习。
+该仓库为springboot开源项目，请按照官网<https://el-admin.vip/guide/ksks.html>进行后端配置即可，保证maven下载包正常，`pom.xml`文件没有出现红字出错即可。该仓库将在掌握springboot框架基础之后进行学习。
 
-该仓库具体配置说明***未完待续***。请各位先下载代码即可，因为需要配置MySQL，我将会为各位配置一个统一的数据库，不需要各位在本地建立数据库。***目前clone代码，保证maven可以下载pom.xml所有代码包即可，后续操作将在近两三天更新***
+由于该后端仓库需要配置相关的数据库和缓存信息，在官网的教程中在本地配置，需要各位下载MySQL和Redis。为了节省大家配置的时间。上述两个软件将由本人进行统一部署，各位只需要修改下方提到的代码即可。
+
+将`eladmin-system/src/main/resources/config/application.yml`第27行做如下修改：
+```
+host: ${REDIS_HOST:120.24.22.88}
+```
+将`eladmin-system/src/main/resources/config/application-dev.yml`和`eladmin-system/src/main/resources/config/application-prod.yml`第7行和第9行分别做如下修改：
+```
+url: jdbc:log4jdbc:mysql://${DB_HOST:120.24.22.88}:${DB_PORT:3306}/${DB_NAME:eladmin}?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false
+```
+```
+password: ${DB_PWD:icesCosine2020.}
+```
+修改完文件之后按照官网指引，在IDEA中直接运行`AppRun`观察是否报错即可。推荐将项目的前端仓库代码也下载下来，然后按照指引在本地启动前端和后端项目，如果登录界面可以进行登录加载到主界面就行了。下载前端项目需要预先安装node的环境编辑器可以选择WebStorm(推荐)或者直接用VS Code也行。因为各位负责后端的同学只要启动项目即可。
