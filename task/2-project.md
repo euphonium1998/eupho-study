@@ -16,9 +16,16 @@ clone之后按照官方网站<https://panjiachen.gitee.io/vue-element-admin-site
 
 由于该后端仓库需要配置相关的数据库和缓存信息，在官网的教程中在本地配置，需要各位下载MySQL和Redis。为了节省大家配置的时间。上述两个软件将由本人进行统一部署，各位只需要修改下方提到的代码即可。
 
-将`eladmin-system/src/main/resources/config/application.yml`第27行做如下修改：
+将`eladmin-system/src/main/resources/config/application.yml`第24-31行做如下修改：（由于目前的策略会存在安全隐患，后续还需要修改）
 ```
-host: ${REDIS_HOST:120.24.22.88}
+  redis:
+    #数据库索引
+    database: ${REDIS_DB:0}
+    host: ${REDIS_HOST:hitszices.redis.rds.aliyuncs.com}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PWD:hitsz_2021}
+    #连接超时时间
+    timeout: 5000
 ```
 将`eladmin-system/src/main/resources/config/application-dev.yml`和`eladmin-system/src/main/resources/config/application-prod.yml`第7行和第9行都做如下修改：
 ```
