@@ -28,6 +28,10 @@ QAQ
 
 ### 资源推荐
 
+**JDBC 教程**
+
+https://www.bilibili.com/video/BV1x4411D7Bx
+
 **配色网站**
 
 https://colorhunt.co
