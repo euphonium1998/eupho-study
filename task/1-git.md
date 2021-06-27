@@ -36,11 +36,13 @@ xxx为代码库，本项目为git@github.com:euphonium1998/eupho-study.git
 
 9.进入github对应仓库页面，提交pull request。将自己的分支与main分支进行合并。按照下方图片顺序。如果之前操作正常就不会出现冲突，如果出现冲突就比较麻烦了
 
-![step 1](/img/step1.png)
-![step 2](/img/step2.png)
-![step 3](/img/step3.png)
+![step 1](/img/1/step1.png)
+![step 2](/img/1/step2.png)
+![step 3](/img/1/step3.png)
 
 10.提交的pull request指定euphonium1998也就是蔡恭灿进行代码审查，由我作为组长进行代码审查，通过之后由组长合并进远程仓库。不可以自行合并进main分支。
+
+![step 4](/img/1/step4.png)
 
 ps: 这就是最基本的分支开发流程，存在冲突也不用慌。最基本的方式就是再本地仓库手动解决冲突。或者重新clone一份代码进行编辑。希望大家可以避免产生分支冲突。
 
