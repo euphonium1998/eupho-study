@@ -30,7 +30,7 @@ QAQ
 
 **配色网站**
 
-https://colorhunt.co
+https://colorhunt.com
 
 https://colordrop.io
 
@@ -38,9 +38,8 @@ https://colordrop.io
 
 https://regexper.com
 
-**Zeal 离线文档**
+**离线开发文档查看器 - Zeal Doc**
 
 https://zealdocs.org/
 
-![image-20210625205938950](/home/coiggahou/.config/Typora/typora-user-images/image-20210625205938950.png)
-
+![](../img/zeal-doc.png)
