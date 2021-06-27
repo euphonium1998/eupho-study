@@ -30,7 +30,7 @@ QAQ
 
 **配色网站**
 
-https://colorhunt.com
+https://colorhunt.co
 
 https://colordrop.io
 
