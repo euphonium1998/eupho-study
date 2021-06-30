@@ -32,6 +32,10 @@ QAQ
 
 https://www.bilibili.com/video/BV1x4411D7Bx
 
+**对 Spring 控制反转和依赖注入的理解（深入浅出的好文章）**
+
+https://www.zhihu.com/question/23277575
+
 **配色网站**
 
 https://colorhunt.co
