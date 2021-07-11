@@ -40,6 +40,10 @@ https://www.zhihu.com/question/23277575
 
 https://www.bilibili.com/video/BV1C4411373T
 
+**关于 JSP 和 Servlet**
+
+https://www.zhihu.com/question/23984162/answer/689106407
+
 **配色网站**
 
 https://colorhunt.co
