@@ -4,7 +4,7 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://120.24.22.88:3306/demo?characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://120.24.22.88:3306/demo?characterEncoding=utf-8&useSSL=false&allowMultiQueries=true
     username: root
     password: icesCosine2020.
     initialization-mode: always
@@ -27,7 +27,7 @@ logging:
     com.example.demo: trace
 mybatis:
   configuration:
-    # ÏÂ»®Ïß×ªÍÕ·å
+    # ï¿½Â»ï¿½ï¿½ï¿½×ªï¿½Õ·ï¿½
     map-underscore-to-camel-case: true
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.example.demo.entity
