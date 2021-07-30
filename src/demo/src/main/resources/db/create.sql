@@ -5,10 +5,16 @@
 ########################################
 
 
+DROP TABLE IF EXISTS `orderitems`;
+DROP TABLE IF EXISTS `orders`;
+DROP TABLE IF EXISTS `products`;
+DROP TABLE IF EXISTS `customers`;
+DROP TABLE IF EXISTS `vendors`;
+DROP TABLE IF EXISTS `productnotes`;
+
 ########################
 # Create customers table
 ########################
-DROP TABLE IF EXISTS `customers`;
 CREATE TABLE customers
 (
   cust_id      int       NOT NULL AUTO_INCREMENT,
@@ -26,7 +32,6 @@ CREATE TABLE customers
 #########################
 # Create orderitems table
 #########################
-DROP TABLE IF EXISTS `orderitems`;
 CREATE TABLE orderitems
 (
   order_num  int          NOT NULL ,
@@ -41,7 +46,6 @@ CREATE TABLE orderitems
 #####################
 # Create orders table
 #####################
-DROP TABLE IF EXISTS `orders`;
 CREATE TABLE orders
 (
   order_num  int      NOT NULL AUTO_INCREMENT,
@@ -53,7 +57,6 @@ CREATE TABLE orders
 #######################
 # Create products table
 #######################
-DROP TABLE IF EXISTS `products`;
 CREATE TABLE products
 (
   prod_id    char(10)      NOT NULL,
@@ -67,7 +70,6 @@ CREATE TABLE products
 ######################
 # Create vendors table
 ######################
-DROP TABLE IF EXISTS `vendors`;
 CREATE TABLE vendors
 (
   vend_id      int      NOT NULL AUTO_INCREMENT,
@@ -83,7 +85,6 @@ CREATE TABLE vendors
 ###########################
 # Create productnotes table
 ###########################
-DROP TABLE IF EXISTS `productnotes`;
 CREATE TABLE productnotes
 (
   note_id    int           NOT NULL AUTO_INCREMENT,
