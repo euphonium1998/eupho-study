@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.CustomerMapper">
+
+    <select id="selectCustomerByOrderNum" resultType="Customer">
+        SELECT cust_name,cust_city FROM customers,orders where orders.order_num=#{num} and orders.cust_id=customers.cust_id
+    </select>
+
+    <delete id="deleteCustomerByName" >
+        delete from customers where cust_name=#{name};
+    </delete>
+
+</mapper>
