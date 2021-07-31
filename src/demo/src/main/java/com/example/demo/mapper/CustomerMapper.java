@@ -5,7 +5,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
-<<<<<<< HEAD
 @Mapper
 @Component
 public interface CustomerMapper {

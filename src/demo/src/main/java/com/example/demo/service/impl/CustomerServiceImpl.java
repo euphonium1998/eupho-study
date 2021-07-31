@@ -31,4 +31,5 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public int saveCustomer(Customer customer) {
         return customerMapper.saveCustomer(customer);
+    }
 }
