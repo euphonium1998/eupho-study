@@ -2,3 +2,6 @@ src/demo/.gitignore
 src/demo/.mvn/
 src/demo/mvn*
 src/demo/mvn*
+src/demo/.idea
+src/demo/target
+src/demo/demo.iml
