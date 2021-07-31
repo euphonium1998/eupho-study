@@ -4,11 +4,17 @@
 <mapper namespace="com.example.demo.mapper.CustomerMapper">
 
     <select id="selectCustomerByOrderNum" resultType="Customer">
-        SELECT cust_name,cust_city FROM customers,orders where orders.order_num=#{num} and orders.cust_id=customers.cust_id
+        SELECT cust_name,cust_city
+        FROM customers,orders
+        WHERE orders.order_num=#{num}
+        AND
+        orders.cust_id=customers.cust_id
     </select>
 
     <delete id="deleteCustomerByName" >
-        delete from customers where cust_name=#{name};
+        DELETE
+        FROM customers
+        WHERE cust_name=#{name};
     </delete>
 
 </mapper>

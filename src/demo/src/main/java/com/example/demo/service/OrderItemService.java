@@ -7,5 +7,5 @@ import org.apache.ibatis.annotations.Param;
  * @date 2021/7/30
  */
 public interface OrderItemService {
-    void deleteByNumAndItem(int num,int item);
+    void deleteByNumAndItem(int num, int item);
 }

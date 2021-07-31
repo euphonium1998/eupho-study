@@ -11,5 +11,5 @@ import org.springframework.stereotype.Component;
 @Mapper
 @Component
 public interface OrderItemMapper {
-    void deleteByNumAndItem(@Param("num")int num,@Param("item")int item);
+    void deleteByNumAndItem(@Param("num")int num, @Param("item")int item);
 }

@@ -16,6 +16,6 @@ public class OrderItemServiceImpl implements OrderItemService {
 
     @Override
     public void deleteByNumAndItem(int num, int item) {
-        orderItemMapper.deleteByNumAndItem(num,item);
+        orderItemMapper.deleteByNumAndItem(num, item);
     }
 }

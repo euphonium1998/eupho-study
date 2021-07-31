@@ -22,7 +22,7 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-    @PostMapping("/selectCustomerByOrderNum")
+    @GetMapping("/selectCustomerByOrderNum")
     public Customer getCustomerByOrderNum(@Param("num")int num){
         return customerService.selectCustomerByOrderNum(num);
     }

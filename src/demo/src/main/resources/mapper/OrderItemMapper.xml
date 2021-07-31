@@ -4,7 +4,11 @@
 <mapper namespace="com.example.demo.mapper.OrderItemMapper">
 
     <delete id="deleteByNumAndItem">
-        delete from orderitems where order_num=#{num} and order_item=#{item}
+        DELETE
+        FROM orderitems
+        WHERE order_num=#{num}
+        AND
+        order_item=#{item}
     </delete>
 
 </mapper>
