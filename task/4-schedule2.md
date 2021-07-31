@@ -24,15 +24,15 @@
 
 1. 返回products表格中价格不低于x的product_name和product_desc。x为输入，输入类型为字符串（注意数据库的price是用decimal这个类型存储上网搜索一下如何转换）
 
-2. 往order_items表格中插入一条新的数据。输入为新数据的json格式通过post方法传递给后端。
+2. 往customers表格中插入一条新的数据。输入为新数据的json格式通过post方法传递给后端。
 
 3. 查询order_num为x的cust_name和cust_city。x为前端输入类型为int
 
-4. 删除customers表格中cust_name为x那一行的数据。x为string
+4. 删除orderitems表格中order_num为x，order_item为y的那一行数据。其中x, y为输入参数，类型皆为int
 
 5. 查询prod_id为x的vendor_name和vendor_address。输入x类型为int
 
-6. 将vendors表格中vend_id为x的那一行的vend_name修改为y。其中x和y均为输入。x为int，y为string
+6. 将productnotes表格中note_id为x的那一行的note_text修改为y。其中x和y均为输入。x为int，y为string
 
 数据库中的数据在个人学习测试更新之后，要跑一下resources/db下的两个脚本。重新格式化数据。
 
