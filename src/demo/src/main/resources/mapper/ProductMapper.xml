@@ -2,15 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.ProductMapper">
 
-    <select id="selectProductByPrice" resultMap="ProductMap1">
+    <select id="selectProductByPrice" resultType="Product">
         SELECT prod_name,prod_desc
         FROM products
         WHERE prod_price >= #{x}
     </select>
-
-    <resultMap id="ProductMap1" type="java.util.HashMap">
-        <id column="prod_name" property="prodName" jdbcType="VARCHAR"/>
-        <result column="prod_desc" property="prodDesc" jdbcType="VARCHAR"/>
-    </resultMap>
 
 </mapper>

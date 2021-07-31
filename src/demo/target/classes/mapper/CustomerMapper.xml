@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.CustomerMapper">
+    <insert id="saveCustomer" parameterType="Customer">
+        INSERT INTO customers(cust_id,
+                              cust_name,
+                              cust_address,
+                              cust_city,
+                              cust_state,
+                              cust_zip,
+                              cust_country,
+                              cust_contact,
+                              cust_email)
+        VALUES (#{customer.custId},
+               #{customer.custName},
+               #{customer.custAddress},
+               #{customer.custCity},
+               #{customer.custState},
+               #{customer.custZip},
+               #{customer.custCountry},
+               #{customer.custContact},
+               #{customer.custEmail})
+    </insert>
+
+</mapper>

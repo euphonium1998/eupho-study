@@ -8,5 +8,5 @@ import java.util.List;
 import java.util.Map;
 
 public interface ProductService {
-    List<Map<String,String>> selectProductByPrice(BigDecimal x);
+    List<Product> selectProductByPrice(BigDecimal x);
 }

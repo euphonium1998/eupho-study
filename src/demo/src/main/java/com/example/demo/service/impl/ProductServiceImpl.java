@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -17,7 +18,7 @@ public class ProductServiceImpl implements ProductService {
     private ProductMapper productMapper;
 
     @Override
-    public List<Map<String,String>> selectProductByPrice(BigDecimal x) {
+    public List<Product> selectProductByPrice(BigDecimal x) {
         return productMapper.selectProductByPrice(x);
     }
 }

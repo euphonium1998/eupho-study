@@ -11,14 +11,14 @@ import java.util.Map;
 
 @CrossOrigin
 @RestController
-@RequestMapping("product")
+@RequestMapping("/product")
 public class ProductController {
 
     @Autowired
     private ProductService productService;
 
     @RequestMapping(value = "selectProductByPrice", method = RequestMethod.POST)
-    public List<Map<String,String>> selectProductByPrice (@RequestBody Product product){
+    public List<Product> selectProductByPrice (@RequestBody Product product){
         return productService.selectProductByPrice(product.getProdPrice());
     }
 
