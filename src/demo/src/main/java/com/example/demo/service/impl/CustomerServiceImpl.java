@@ -5,7 +5,6 @@ import com.example.demo.mapper.CustomerMapper;
 import com.example.demo.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,6 +17,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     private CustomerMapper customerMapper;
 
+
     @Override
     public Customer selectCustomerByOrderNum(int num) {
         Customer customer = customerMapper.selectCustomerByOrderNum(num);
@@ -27,5 +27,9 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void deleteCustomerByName(String name) {
         customerMapper.deleteCustomerByName(name);
+    }
+    @Override
+    public int saveCustomer(Customer customer) {
+        return customerMapper.saveCustomer(customer);
     }
 }

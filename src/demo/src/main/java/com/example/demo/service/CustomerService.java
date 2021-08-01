@@ -3,7 +3,6 @@ package com.example.demo.service;
 import com.example.demo.entity.Customer;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
-
 import java.util.Map;
 
 /**
@@ -14,4 +13,5 @@ public interface CustomerService {
     Customer selectCustomerByOrderNum(int num);
 
     void deleteCustomerByName(String name);
+    int saveCustomer(Customer customer);
 }

@@ -4,12 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- * @author 西云研究所
- * @date 2021/7/29
- */
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
+
 public class Customer {
     private int custId;
     private String custName;
