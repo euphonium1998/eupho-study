@@ -9,10 +9,10 @@ spring:
     password: icesCosine2020.
     initialization-mode: always
     continue-on-error: true
-    schema:
-      - "classpath:db/create.sql"
-    data:
-      - "classpath:db/populate.sql"
+#    schema:
+#      - "classpath:db/create.sql"
+#    data:
+#      - "classpath:db/populate.sql"
     hikari:
       minimum-idle: 5
       connection-test-query: SELECT 1 FROM DUAL
@@ -27,7 +27,6 @@ logging:
     com.example.demo: trace
 mybatis:
   configuration:
-    # 下划线转驼峰
     map-underscore-to-camel-case: true
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.example.demo.entity

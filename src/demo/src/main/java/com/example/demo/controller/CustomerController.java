@@ -2,6 +2,9 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.Customer;
 import com.example.demo.service.CustomerService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 import com.example.demo.service.impl.CustomerServiceImpl;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,18 +15,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
-/**
- * @author 西云研究所
- * @date 2021/7/29
- */
+@CrossOrigin
 @RestController
 @RequestMapping("/customers")
 public class CustomerController {
+
     @Autowired
     private CustomerService customerService;
 
+    @RequestMapping(value="/saveCustomer", method = RequestMethod.POST)
+    public int saveCustomer(@RequestBody Customer customer) {
+        return customerService.saveCustomer(customer);
+    }
+
     @GetMapping("/selectCustomerByOrderNum")
-    public Customer getCustomerByOrderNum(@Param("num")int num){
+    public Customer getCustomerByOrderNum(@Param("num")int num) {
         return customerService.selectCustomerByOrderNum(num);
     }
 
@@ -31,4 +37,5 @@ public class CustomerController {
     public void deleteCustomerByName(@Param("name")String name){
         customerService.deleteCustomerByName(name);
     }
+
 }
