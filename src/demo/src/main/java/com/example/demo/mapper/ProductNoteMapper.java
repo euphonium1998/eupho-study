@@ -15,4 +15,6 @@ public interface ProductNoteMapper {
     List<ProductNote> selectAllProductNote();
 
     ProductNote selectByNoteId(@Param("id") int id);
+
+    void updateProdTextById(@Param("id") int id, @Param("text") String text);
 }

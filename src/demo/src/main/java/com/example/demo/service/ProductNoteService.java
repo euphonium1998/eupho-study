@@ -9,4 +9,6 @@ public interface ProductNoteService {
     List<ProductNote> selectAllProductNote();
 
     ProductNote selectByNoteId(int id);
+
+    void updateProdTextById(int id, String text);
 }

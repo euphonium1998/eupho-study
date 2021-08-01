@@ -1,0 +1,269 @@
+[1mdiff --git a/src/demo/.idea/encodings.xml b/src/demo/.idea/encodings.xml[m
+[1mindex 63e9001..aa00ffa 100644[m
+[1m--- a/src/demo/.idea/encodings.xml[m
+[1m+++ b/src/demo/.idea/encodings.xml[m
+[36m@@ -2,5 +2,6 @@[m
+ <project version="4">[m
+   <component name="Encoding">[m
+     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />[m
+[32m+[m[32m    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />[m
+   </component>[m
+ </project>[m
+\ No newline at end of file[m
+[1mdiff --git a/src/demo/.idea/sqldialects.xml b/src/demo/.idea/sqldialects.xml[m
+[1mindex 583674c..c36165f 100644[m
+[1m--- a/src/demo/.idea/sqldialects.xml[m
+[1m+++ b/src/demo/.idea/sqldialects.xml[m
+[36m@@ -2,5 +2,6 @@[m
+ <project version="4">[m
+   <component name="SqlDialectMappings">[m
+     <file url="file://$PROJECT_DIR$/src/main/resources/db/create.sql" dialect="MySQL" />[m
+[32m+[m[32m    <file url="file://$PROJECT_DIR$/src/main/resources/db/populate.sql" dialect="MySQL" />[m
+   </component>[m
+ </project>[m
+\ No newline at end of file[m
+[1mdiff --git a/src/demo/src/main/java/com/example/demo/entity/Product.java b/src/demo/src/main/java/com/example/demo/entity/Product.java[m
+[1mindex 3b79446..05580f4 100644[m
+[1m--- a/src/demo/src/main/java/com/example/demo/entity/Product.java[m
+[1m+++ b/src/demo/src/main/java/com/example/demo/entity/Product.java[m
+[36m@@ -1,2 +1,17 @@[m
+[31m-package com.example.demo.entity;public class Product {[m
+[32m+[m[32mpackage com.example.demo.entity;[m
+[32m+[m
+[32m+[m[32mimport lombok.AllArgsConstructor;[m
+[32m+[m[32mimport lombok.Data;[m
+[32m+[m[32mimport lombok.NoArgsConstructor;[m
+[32m+[m
+[32m+[m[32m@Data[m
+[32m+[m[32m@NoArgsConstructor[m
+[32m+[m[32m@AllArgsConstructor[m
+[32m+[m[32mpublic class Product {[m
+[32m+[m
+[32m+[m[32m    private int prodId;[m
+[32m+[m[32m    private int vendId;[m
+[32m+[m[32m    private String prodName;[m
+[32m+[m[32m    private double prodPrice;[m
+[32m+[m[32m    private String prodDesc;[m
+ }[m
+[1mdiff --git a/src/demo/src/main/java/com/example/demo/entity/Vendor.java b/src/demo/src/main/java/com/example/demo/entity/Vendor.java[m
+[1mindex 664e0ac..4e61e45 100644[m
+[1m--- a/src/demo/src/main/java/com/example/demo/entity/Vendor.java[m
+[1m+++ b/src/demo/src/main/java/com/example/demo/entity/Vendor.java[m
+[36m@@ -7,7 +7,7 @@[m [mimport lombok.NoArgsConstructor;[m
+ @Data[m
+ @AllArgsConstructor[m
+ @NoArgsConstructor[m
+[31m-public class Vendors {[m
+[32m+[m[32mpublic class Vendor {[m
+ [m
+     private int vendId;[m
+     private String vendName;[m
+[1mdiff --git a/src/demo/src/main/java/com/example/demo/mapper/ProductMapper.java b/src/demo/src/main/java/com/example/demo/mapper/ProductMapper.java[m
+[1mindex 5d02b24..14a5b02 100644[m
+[1m--- a/src/demo/src/main/java/com/example/demo/mapper/ProductMapper.java[m
+[1m+++ b/src/demo/src/main/java/com/example/demo/mapper/ProductMapper.java[m
+[36m@@ -1,4 +1,14 @@[m
+ package com.example.demo.mapper;[m
+ [m
+[31m-public interface VendorsMapper {[m
+[32m+[m[32mimport com.example.demo.entity.Vendor;[m
+[32m+[m[32mimport org.apache.ibatis.annotations.Mapper;[m
+[32m+[m[32mimport org.apache.ibatis.annotations.Param;[m
+[32m+[m[32mimport org.springframework.stereotype.Component;[m
+[32m+[m
+[32m+[m[32m@Mapper[m
+[32m+[m[32m@Component[m
+[32m+[m[32mpublic interface ProductMapper {[m
+[32m+[m
+[32m+[m[32m    Vendor selectVendorByProdId(@Param("id") String id);[m
+[32m+[m
+ }[m
+[1mdiff --git a/src/demo/src/main/java/com/example/demo/mapper/ProductNoteMapper.java b/src/demo/src/main/java/com/example/demo/mapper/ProductNoteMapper.java[m
+[1mindex 069272a..52865bb 100644[m
+[1m--- a/src/demo/src/main/java/com/example/demo/mapper/ProductNoteMapper.java[m
+[1m+++ b/src/demo/src/main/java/com/example/demo/mapper/ProductNoteMapper.java[m
+[36m@@ -15,4 +15,6 @@[m [mpublic interface ProductNoteMapper {[m
+     List<ProductNote> selectAllProductNote();[m
+ [m
+     ProductNote selectByNoteId(@Param("id") int id);[m
+[32m+[m
+[32m+[m[32m    void updateProdTextById(@Param("id") int id, @Param("text") String text);[m
+ }[m
+[1mdiff --git a/src/demo/src/main/java/com/example/demo/service/ProductNoteService.java b/src/demo/src/main/java/com/example/demo/service/ProductNoteService.java[m
+[1mindex eaa2e71..4c8558b 100644[m
+[1m--- a/src/demo/src/main/java/com/example/demo/service/ProductNoteService.java[m
+[1m+++ b/src/demo/src/main/java/com/example/demo/service/ProductNoteService.java[m
+[36m@@ -9,4 +9,6 @@[m [mpublic interface ProductNoteService {[m
+     List<ProductNote> selectAllProductNote();[m
+ [m
+     ProductNote selectByNoteId(int id);[m
+[32m+[m
+[32m+[m[32m    void updateProdTextById(int id, String text);[m
+ }[m
+[1mdiff --git a/src/demo/src/main/java/com/example/demo/service/ProductService.java b/src/demo/src/main/java/com/example/demo/service/ProductService.java[m
+[1mindex 405d458..c4ba89e 100644[m
+[1m--- a/src/demo/src/main/java/com/example/demo/service/ProductService.java[m
+[1m+++ b/src/demo/src/main/java/com/example/demo/service/ProductService.java[m
+[36m@@ -1,2 +1,8 @@[m
+[31m-package com.example.demo.service;public interface ProductService {[m
+[32m+[m[32mpackage com.example.demo.service;[m
+[32m+[m
+[32m+[m[32mimport com.example.demo.entity.Vendor;[m
+[32m+[m
+[32m+[m[32mpublic interface ProductService {[m
+[32m+[m
+[32m+[m[32m    Vendor selectVendorByProdId(String id);[m
+ }[m
+[1mdiff --git a/src/demo/src/main/java/com/example/demo/service/impl/ProductNoteServiceImpl.java b/src/demo/src/main/java/com/example/demo/service/impl/ProductNoteServiceImpl.java[m
+[1mindex 2efa1da..6a53202 100644[m
+[1m--- a/src/demo/src/main/java/com/example/demo/service/impl/ProductNoteServiceImpl.java[m
+[1m+++ b/src/demo/src/main/java/com/example/demo/service/impl/ProductNoteServiceImpl.java[m
+[36m@@ -24,4 +24,9 @@[m [mpublic class ProductNoteServiceImpl implements ProductNoteService {[m
+     public ProductNote selectByNoteId(int id) {[m
+         return productNoteMapper.selectByNoteId(id);[m
+     }[m
+[32m+[m
+[32m+[m[32m    @Override[m
+[32m+[m[32m    public void updateProdTextById(int id, String text) {[m
+[32m+[m[32m        productNoteMapper.updateProdTextById(id, text);[m
+[32m+[m[32m    }[m
+ }[m
+[1mdiff --git a/src/demo/src/main/java/com/example/demo/service/impl/ProductServiceImpl.java b/src/demo/src/main/java/com/example/demo/service/impl/ProductServiceImpl.java[m
+[1mindex f83eea5..2fff44f 100644[m
+[1m--- a/src/demo/src/main/java/com/example/demo/service/impl/ProductServiceImpl.java[m
+[1m+++ b/src/demo/src/main/java/com/example/demo/service/impl/ProductServiceImpl.java[m
+[36m@@ -1,2 +1,21 @@[m
+[31m-package com.example.demo.service.impl;public class ProductServiceImpl {[m
+[32m+[m[32mpackage com.example.demo.service.impl;[m
+[32m+[m
+[32m+[m[32mimport com.example.demo.entity.Vendor;[m
+[32m+[m[32mimport com.example.demo.mapper.ProductMapper;[m
+[32m+[m[32mimport com.example.demo.service.ProductNoteService;[m
+[32m+[m[32mimport com.example.demo.service.ProductService;[m
+[32m+[m[32mimport org.springframework.beans.factory.annotation.Autowired;[m
+[32m+[m[32mimport org.springframework.stereotype.Service;[m
+[32m+[m
+[32m+[m[32m@Service[m
+[32m+[m[32mpublic class ProductServiceImpl implements ProductService {[m
+[32m+[m
+[32m+[m[32m    @Autowired[m
+[32m+[m[32m    private ProductMapper productMapper;[m
+[32m+[m
+[32m+[m[32m    @Override[m
+[32m+[m[32m    public Vendor selectVendorByProdId(String id) {[m
+[32m+[m[32m        Vendor vendor = productMapper.selectVendorByProdId(id);[m
+[32m+[m[32m        return vendor;[m
+[32m+[m[32m    }[m
+ }[m
+[1mdiff --git a/src/demo/src/main/resources/application.yml b/src/demo/src/main/resources/application.yml[m
+[1mindex 050405d..d0b8dd3 100644[m
+[1m--- a/src/demo/src/main/resources/application.yml[m
+[1m+++ b/src/demo/src/main/resources/application.yml[m
+[36m@@ -4,15 +4,15 @@[m [mserver:[m
+ spring:[m
+   datasource:[m
+     driver-class-name: com.mysql.cj.jdbc.Driver[m
+[31m-    url: jdbc:mysql://120.24.22.88:3306/demo?characterEncoding=utf-8&useSSL=false[m
+[32m+[m[32m    url: jdbc:mysql://localhost:3306/spring_boot_demo?useUnicode=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=GMT%2B8[m
+     username: root[m
+[31m-    password: icesCosine2020.[m
+[32m+[m[32m    password: kaicun67[m
+     initialization-mode: always[m
+     continue-on-error: true[m
+[31m-    schema:[m
+[31m-      - "classpath:db/create.sql"[m
+[31m-    data:[m
+[31m-      - "classpath:db/populate.sql"[m
+[32m+[m[32m#    schema:[m
+[32m+[m[32m#      - "classpath:db/create.sql"[m
+[32m+[m[32m#    data:[m
+[32m+[m[32m#      - "classpath:db/populate.sql"sql[m
+     hikari:[m
+       minimum-idle: 5[m
+       connection-test-query: SELECT 1 FROM DUAL[m
+[36m@@ -27,7 +27,6 @@[m [mlogging:[m
+     com.example.demo: trace[m
+ mybatis:[m
+   configuration:[m
+[31m-    # ÏÂ»®Ïß×ªÍÕ·å[m
+     map-underscore-to-camel-case: true[m
+   mapper-locations: classpath:mapper/*.xml[m
+   type-aliases-package: com.example.demo.entity[m
+[1mdiff --git a/src/demo/src/main/resources/mapper/ProductMapper.xml b/src/demo/src/main/resources/mapper/ProductMapper.xml[m
+[1mindex e69de29..7f82f40 100644[m
+[1m--- a/src/demo/src/main/resources/mapper/ProductMapper.xml[m
+[1m+++ b/src/demo/src/main/resources/mapper/ProductMapper.xml[m
+[36m@@ -0,0 +1,13 @@[m
+[32m+[m[32m<?xml version="1.0" encoding="UTF-8"?>[m
+[32m+[m[32m<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">[m
+[32m+[m[32m<mapper namespace="com.example.demo.mapper.ProductMapper">[m
+[32m+[m
+[32m+[m
+[32m+[m[32m    <select id="selectVendorByProdId" resultType="Vendor">[m
+[32m+[m[32m        SELECT vendors.vend_name,vendors.vend_id[m
+[32m+[m[32m        FROM vendors,products[m
+[32m+[m[32m        WHERE products.prod_id = #{id}[m
+[32m+[m[32m        AND vendors.vend_id = products.vend_id[m
+[32m+[m[32m    </select>[m
+[32m+[m
+[32m+[m[32m</mapper>[m
+\ No newline at end of file[m
+[1mdiff --git a/src/demo/src/main/resources/mapper/ProductNoteMapper.xml b/src/demo/src/main/resources/mapper/ProductNoteMapper.xml[m
+[1mindex 04be767..064b554 100644[m
+[1m--- a/src/demo/src/main/resources/mapper/ProductNoteMapper.xml[m
+[1m+++ b/src/demo/src/main/resources/mapper/ProductNoteMapper.xml[m
+[36m@@ -12,4 +12,10 @@[m
+         WHERE note_id = #{id}[m
+     </select>[m
+ [m
+[32m+[m[32m    <update id="updateProdTextById" >[m
+[32m+[m[32m        UPDATE productnotes[m
+[32m+[m[32m        SET note_text = #{text}[m
+[32m+[m[32m        WHERE note_id = #{id}[m
+[32m+[m[32m    </update>[m
+[32m+[m
+ </mapper>[m
+\ No newline at end of file[m
+[1mdiff --git a/src/demo/src/test/java/com/example/demo/DemoApplicationTests.java b/src/demo/src/test/java/com/example/demo/DemoApplicationTests.java[m
+[1mindex efc68f4..50967ac 100644[m
+[1m--- a/src/demo/src/test/java/com/example/demo/DemoApplicationTests.java[m
+[1m+++ b/src/demo/src/test/java/com/example/demo/DemoApplicationTests.java[m
+[36m@@ -1,6 +1,8 @@[m
+ package com.example.demo;[m
+ [m
+ import com.example.demo.entity.ProductNote;[m
+[32m+[m[32mimport com.example.demo.entity.Vendor;[m
+[32m+[m[32mimport com.example.demo.mapper.ProductMapper;[m
+ import com.example.demo.mapper.ProductNoteMapper;[m
+ import lombok.extern.slf4j.Slf4j;[m
+ import org.junit.jupiter.api.Test;[m
+[36m@@ -16,10 +18,29 @@[m [mclass DemoApplicationTests {[m
+     @Autowired[m
+     private ProductNoteMapper productNoteMapper;[m
+ [m
+[32m+[m[32m    @Autowired[m
+[32m+[m[32m    private ProductMapper productMapper;[m
+[32m+[m
+     @Test[m
+     void contextLoads() {[m
+         List<ProductNote> productNoteList = productNoteMapper.selectAllProductNote();[m
+[32m+[m[32m        System.out.println(productNoteList);[m
+         log.debug("All product notes = {}", productNoteList);[m
+     }[m
+ [m
+[32m+[m[32m    @Test[m
+[32m+[m[32m    void testVendor() {[m
+[32m+[m[32m        Vendor vendor = productMapper.selectVendorByProdId("FB");[m
+[32m+[m[32m        System.out.println(vendor);[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    @Test[m
+[32m+[m[32m    void testUpdate() {[m
+[32m+[m[32m        ProductNote productNote =  productNoteMapper.selectByNoteId(101);[m
+[32m+[m[32m        System.out.println(productNote.getNoteText());[m
+[32m+[m[32m        productNoteMapper.updateProdTextById(101,"HITSZ");[m
+[32m+[m[32m        ProductNote productNote1 = productNoteMapper.selectByNoteId(101);[m
+[32m+[m[32m        System.out.println(productNote1.getNoteText());[m
+[32m+[m[32m    }[m
+[32m+[m
+ }[m
