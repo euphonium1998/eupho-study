@@ -13,5 +13,6 @@ public interface CustomerService {
     Customer selectCustomerByOrderNum(int num);
 
     void deleteCustomerByName(String name);
+
     int saveCustomer(Customer customer);
 }

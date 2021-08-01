@@ -17,7 +17,7 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @RequestMapping(value = "selectProductByPrice", method = RequestMethod.POST)
+    @RequestMapping(value = "/selectProductByPrice", method = RequestMethod.POST)
     public List<Product> selectProductByPrice (@RequestBody Product product){
         return productService.selectProductByPrice(product.getProdPrice());
     }

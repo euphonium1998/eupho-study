@@ -23,13 +23,13 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-    @RequestMapping(value="saveCustomer", method = RequestMethod.POST)
-    @ResponseBody
+    @RequestMapping(value="/saveCustomer", method = RequestMethod.POST)
     public int saveCustomer(@RequestBody Customer customer) {
         return customerService.saveCustomer(customer);
     }
+
     @GetMapping("/selectCustomerByOrderNum")
-    public Customer getCustomerByOrderNum(@Param("num")int num){
+    public Customer getCustomerByOrderNum(@Param("num")int num) {
         return customerService.selectCustomerByOrderNum(num);
     }
 
