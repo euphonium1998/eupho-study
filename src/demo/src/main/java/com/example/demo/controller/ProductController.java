@@ -6,6 +6,7 @@ import com.example.demo.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -17,9 +18,10 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @RequestMapping(value = "/selectProductByPrice", method = RequestMethod.POST)
-    public List<Product> selectProductByPrice (@RequestBody Product product){
-        return productService.selectProductByPrice(product.getProdPrice());
+    @RequestMapping(value = "/selectProductByPrice", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Product> selectProductByPrice (@RequestBody String priceLowerBound){
+        return productService.selectProductByPrice(priceLowerBound);
     }
 
 }

@@ -18,7 +18,7 @@ public class ProductServiceImpl implements ProductService {
     private ProductMapper productMapper;
 
     @Override
-    public List<Product> selectProductByPrice(BigDecimal x) {
-        return productMapper.selectProductByPrice(x);
+    public List<Product> selectProductByPrice(String priceLowerBound) {
+        return productMapper.selectProductByPrice(new BigDecimal(priceLowerBound));
     }
 }

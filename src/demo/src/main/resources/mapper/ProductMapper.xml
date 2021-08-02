@@ -5,7 +5,7 @@
     <select id="selectProductByPrice" resultType="Product">
         SELECT prod_name, prod_desc
         FROM products
-        WHERE prod_price >= #{x}
+        WHERE prod_price >= #{priceLowerBound}
     </select>
 
 </mapper>
