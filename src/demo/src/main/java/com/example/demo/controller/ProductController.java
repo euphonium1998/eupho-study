@@ -20,7 +20,7 @@ public class ProductController {
 
     @RequestMapping(value = "/selectProductByPrice", method = RequestMethod.GET)
     @ResponseBody
-    public List<Product> selectProductByPrice (@RequestBody String priceLowerBound){
+    public List<Product> selectProductByPrice (@RequestParam String priceLowerBound){
         return productService.selectProductByPrice(priceLowerBound);
     }
 
