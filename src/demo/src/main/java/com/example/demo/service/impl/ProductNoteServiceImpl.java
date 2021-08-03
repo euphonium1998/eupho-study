@@ -24,4 +24,9 @@ public class ProductNoteServiceImpl implements ProductNoteService {
     public ProductNote selectByNoteId(int id) {
         return productNoteMapper.selectByNoteId(id);
     }
+
+    @Override
+    public void updateNoteTextByNoteId(int id, String text) {
+        productNoteMapper.updateNoteTextByNoteId(id, text);
+    }
 }

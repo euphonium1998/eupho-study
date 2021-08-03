@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.ProductNote;
 import com.example.demo.service.ProductNoteService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,5 +24,10 @@ public class ProductNoteController {
     @RequestMapping(value = "/selectByNoteId", method = RequestMethod.POST)
     public ProductNote selectByNoteId(@RequestBody ProductNote productNote) {
         return productNoteService.selectByNoteId(productNote.getNoteId());
+    }
+
+    @PostMapping(value = "/updateNoteTextByNoteId")
+    public void updateNoteTextByNoteId(@Param("id") int id, @Param("text") String text) {
+        productNoteService.updateNoteTextByNoteId(id, text);
     }
 }

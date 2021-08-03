@@ -3,6 +3,7 @@ package com.example.demo;
 import com.example.demo.entity.Customer;
 import com.example.demo.entity.Product;
 import com.example.demo.entity.ProductNote;
+import com.example.demo.entity.Vendor;
 import com.example.demo.mapper.CustomerMapper;
 import com.example.demo.mapper.ProductMapper;
 import com.example.demo.mapper.ProductNoteMapper;
@@ -30,6 +31,12 @@ class DemoApplicationTests {
     void contextLoads() {
         List<ProductNote> productNoteList = productNoteMapper.selectAllProductNote();
         log.debug("All product notes = {}", productNoteList);
+    }
+
+    @Test
+    void selectVendorTest() {
+        Vendor vendor = productMapper.selectVendorByProdId("FB");
+        System.out.println(vendor);
     }
 
 }

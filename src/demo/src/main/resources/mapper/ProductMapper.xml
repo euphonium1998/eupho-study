@@ -8,6 +8,12 @@
         WHERE prod_price >= #{priceLowerBound}
     </select>
 
+    <select id="selectVendorByProdId" resultType="Vendor">
+        SELECT vendors.vend_name,vendors.vend_id
+        FROM vendors,products
+        WHERE products.prod_id = #{id}
+          AND vendors.vend_id = products.vend_id
+    </select>
 </mapper>
 
 
