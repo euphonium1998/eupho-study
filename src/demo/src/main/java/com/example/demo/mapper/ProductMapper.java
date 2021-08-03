@@ -13,5 +13,5 @@ import java.util.Map;
 @Component
 public interface ProductMapper {
     //select products with price greater than x
-    List<Product> selectProductByPrice(BigDecimal x);
+    List<Product> selectProductByPrice(BigDecimal priceLowerBound);
 }
