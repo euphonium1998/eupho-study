@@ -27,7 +27,7 @@ public class ProductNoteController {
     }
 
     @PostMapping(value = "/updateNoteTextByNoteId")
-    public void updateNoteTextByNoteId(@Param("id") int id, @Param("text") String text) {
+    public void updateNoteTextByNoteId(@RequestBody int id, @RequestBody String text) {
         productNoteService.updateNoteTextByNoteId(id, text);
     }
 }
