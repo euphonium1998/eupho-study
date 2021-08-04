@@ -12,4 +12,9 @@
         WHERE note_id = #{id}
     </select>
 
+    <update id="updateProdTextById" parameterType="ProductNote">
+        UPDATE productnotes
+        SET note_text = #{text}
+        WHERE note_id = #{id}
+    </update>
 </mapper>
