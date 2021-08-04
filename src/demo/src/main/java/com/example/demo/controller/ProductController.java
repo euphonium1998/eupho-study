@@ -21,7 +21,6 @@ public class ProductController {
     private ProductService productService;
 
     @RequestMapping(value = "/selectProductByPrice", method = RequestMethod.GET)
-    @ResponseBody
     public List<Product> selectProductByPrice (@RequestParam String priceLowerBound){
         return productService.selectProductByPrice(priceLowerBound);
     }

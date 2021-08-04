@@ -5,3 +5,29 @@ src/demo/mvn*
 src/demo/.idea
 src/demo/target
 src/demo/demo.iml
+
+
+# web .gitignore
+src/demo-web/.DS_Store
+src/demo-web/node_modules
+src/demo-web/dist
+
+
+# local env files
+src/demo-web/.env.local
+src/demo-web/.env.*.local
+
+# Log files
+src/demo-web/npm-debug.log*
+src/demo-web/yarn-debug.log*
+src/demo-web/yarn-error.log*
+src/demo-web/pnpm-debug.log*
+
+# Editor directories and files
+src/demo-web/.idea
+src/demo-web/.vscode
+src/demo-web/*.suo
+src/demo-web/*.ntvs*
+src/demo-web/*.njsproj
+src/demo-web/*.sln
+src/demo-web/*.sw?
