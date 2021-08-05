@@ -40,7 +40,7 @@
 <script>
 
 import axios from "axios";
-
+import {selectByPordId} from '@/api/task5'
   export default {
     data () {
       return {
@@ -71,44 +71,42 @@ import axios from "axios";
         
         // this.$refs.form.validated()
         let formData = new FormData();
-        console.log("gethere")
         for(var key in this.formMess){
           console.log(key)
           console.log(this.formMess[key])
           formData.append(key, this.formMess[key]);
         }
         console.log("formData")
-
-        axios({
-          method:"post",
-          url: '/task5',
-          headers: {
-            "Content-Type": "multipart/form-data"
-          },
-          withCredentials:true,
-	        data:formData
-        }).then((res)=>{
+        selectByPordId(formData).then(res =>{
           this.vendor = []
           res.data.forEach(element => {
             this.vendor.push({
               prod_id: element.prod_id,
               vendor_name: element.vendor_name,
               vendor_address: vendor_address
-            })
+            }) 
           });
           console.log(res);
         });
-        // selectByPordId().then(res =>{
+        // axios({
+        //   method:"post",
+        //   url: '/task5',
+        //   headers: {
+        //     "Content-Type": "multipart/form-data"
+        //   },
+        //   withCredentials:true,
+	      //   data:formData
+        // }).then((res)=>{
         //   this.vendor = []
         //   res.data.forEach(element => {
         //     this.vendor.push({
         //       prod_id: element.prod_id,
         //       vendor_name: element.vendor_name,
         //       vendor_address: vendor_address
-        //     })
+        //     }) 
         //   });
         //   console.log(res);
-        // })
+        // });
       },
     }
   }

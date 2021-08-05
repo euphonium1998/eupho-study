@@ -59,17 +59,20 @@ import axios from "axios";
         for(var key in this.formMess){
           formData.append(key,this.formMess[key]);
         }
-        axios({
-          method:"post",
-          url: '/task6',
-          headers: {
-            "Content-Type": "multipart/form-data"
-          },
-          withCredentials:true,
-	        data:formData
-        }).then((res)=>{
+        changeNodeId(formData).then(res =>{
           console.log(res);
-        });
+        })
+        // axios({
+        //   method:"post",
+        //   url: '/task6',
+        //   headers: {
+        //     "Content-Type": "multipart/form-data"
+        //   },
+        //   withCredentials:true,
+	      //   data:formData
+        // }).then((res)=>{
+        //   console.log(res);
+        // });
         
         
       },
