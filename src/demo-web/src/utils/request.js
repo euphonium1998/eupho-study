@@ -2,7 +2,7 @@ import axios from "axios";
 import { Notification } from 'element-ui';
 
 const service = axios.create({
-  baseURL: 'http://localhost:8001', // url = base url + request url
+  baseURL: 'http://47.97.202.211:16666', // url = base url + request url
   // withCredentials: true, // send cookies when cross-domain requests
   timeout: 5000 // request timeout
 })
