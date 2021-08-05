@@ -8,12 +8,12 @@
         <v-row>
           <v-col>
             <v-form ref="form" v-model="valid" lazy-validation>
-              <v-text-field v-model="note_id_x"
+              <v-text-field v-model="formMess.note_id_x"
                             :rules="prodRules"
                             label="note_id_x"
                             required
               ></v-text-field>
-              <v-text-field v-model="note_id_y"
+              <v-text-field v-model="formMess.note_id_y"
                             :rules="prodRules"
                             label="note_id_y"
                             required
@@ -22,7 +22,7 @@
                 :disabled="!valid"
                 color="success"
                 class="mr-4"
-                @click="validate()"
+                @click="validated"
               >
                 replace
               </v-btn>
@@ -41,8 +41,11 @@ import axios from "axios";
     data () {
       return {
         valid:true,
-        name: '',
-        note_id_x: '',
+        formMess:{
+          note_id_x: '',
+          note_id_y: ''
+        },
+        
         note_id_y: '',
         prodRules: [
         v => !!v || 'prid_id is required',
@@ -51,10 +54,22 @@ import axios from "axios";
       }
     },
     methods:{
-      validate(){
-        changeNodeId().then(res =>{
+      validated(){
+        let formData = new FormData();
+        for(var key in this.formMess){
+          formData.append(key,this.formMess[key]);
+        }
+        axios({
+          method:"post",
+          url: '/task6',
+          headers: {
+            "Content-Type": "multipart/form-data"
+          },
+          withCredentials:true,
+	        data:formData
+        }).then((res)=>{
           console.log(res);
-        })
+        });
         
         
       },

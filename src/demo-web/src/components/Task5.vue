@@ -1,13 +1,12 @@
 <template>
   <div>
-    
     <v-container class="my-5">
       <p class="font-weight-black">SWX's part.</p>
         <p class="font-weight-regular">查询prod_id为x的vendor_name和vendor_address。输入x类型为int.</p>
         <v-row>
           <v-col>
             <v-form ref="form" v-model="valid" lazy-validation>
-              <v-text-field v-model="prod_id"
+              <v-text-field v-model="formMess.prod_id"
                             :rules="prodRules"
                             label="prod_id"
                             required
@@ -16,7 +15,7 @@
                 :disabled="!valid"
                 color="success"
                 class="mr-4"
-                @click="validate()"
+                @click="validated"
               >
                 查询
               </v-btn>
@@ -39,14 +38,16 @@
 </template>
 
 <script>
-import {selectByPordId} from '@/api/task5'
+
 import axios from "axios";
+
   export default {
     data () {
       return {
         valid:true,
-        name: '',
-        prod_id: '',
+        formMess:{
+          prod_id: '',
+        },
         prodRules: [
         v => !!v || 'prid_id is required',
         //这里可以加入判断数字的地方
@@ -66,8 +67,27 @@ import axios from "axios";
       }
     },
     methods:{
-      validate(){
-        selectByPordId().then(res =>{
+      validated(){
+        
+        // this.$refs.form.validated()
+        let formData = new FormData();
+        console.log("gethere")
+        for(var key in this.formMess){
+          console.log(key)
+          console.log(this.formMess[key])
+          formData.append(key, this.formMess[key]);
+        }
+        console.log("formData")
+
+        axios({
+          method:"post",
+          url: '/task5',
+          headers: {
+            "Content-Type": "multipart/form-data"
+          },
+          withCredentials:true,
+	        data:formData
+        }).then((res)=>{
           this.vendor = []
           res.data.forEach(element => {
             this.vendor.push({
@@ -77,9 +97,18 @@ import axios from "axios";
             })
           });
           console.log(res);
-        })
-        
-        
+        });
+        // selectByPordId().then(res =>{
+        //   this.vendor = []
+        //   res.data.forEach(element => {
+        //     this.vendor.push({
+        //       prod_id: element.prod_id,
+        //       vendor_name: element.vendor_name,
+        //       vendor_address: vendor_address
+        //     })
+        //   });
+        //   console.log(res);
+        // })
       },
     }
   }
