@@ -1,14 +1,14 @@
 import request from "@/utils/request";
 
-export function changeNodeId(formData) {
+export function changeNodeId(data) {
   return request({
-    url: '/task6',
+    url: '/productNote/updateNoteTextByNoteId',
     method: 'post',
-    headers: {
-      "Content-Type": "multipart/form-data"
-    },
-    withCredentials:true,
-    data:formData
+    // headers: {
+    //   "Content-Type": "multipart/form-data"
+    // },
+    // withCredentials:true,
+    data
 
   })
 }

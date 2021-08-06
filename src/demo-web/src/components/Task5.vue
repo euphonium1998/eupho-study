@@ -6,7 +6,7 @@
         <v-row>
           <v-col>
             <v-form ref="form" v-model="valid" lazy-validation>
-              <v-text-field v-model="formMess.prod_id"
+              <v-text-field v-model="prod_id"
                             :rules="prodRules"
                             label="prod_id"
                             required
@@ -45,9 +45,10 @@ import {selectByPordId} from '@/api/task5'
     data () {
       return {
         valid:true,
-        formMess:{
-          prod_id: '',
-        },
+        // formMess:{
+        //   prod_id: '',
+        // },
+        prod_id: '',
         prodRules: [
         v => !!v || 'prid_id is required',
         //这里可以加入判断数字的地方
@@ -55,7 +56,7 @@ import {selectByPordId} from '@/api/task5'
 
         vendorHeaders: [
           {
-            text: 'prod_id',
+            text: 'vend_id',
             align: 'start',
             sortable: false,
             value: 'prod_id',
@@ -68,24 +69,16 @@ import {selectByPordId} from '@/api/task5'
     },
     methods:{
       validated(){
-        
-        // this.$refs.form.validated()
-        let formData = new FormData();
-        for(var key in this.formMess){
-          console.log(key)
-          console.log(this.formMess[key])
-          formData.append(key, this.formMess[key]);
-        }
-        console.log("formData")
-        selectByPordId(formData).then(res =>{
+
+        console.log(this.prod_id)
+        selectByPordId(this.prod_id).then(res =>{
+          console.log(res.data)
           this.vendor = []
-          res.data.forEach(element => {
-            this.vendor.push({
-              prod_id: element.prod_id,
-              vendor_name: element.vendor_name,
-              vendor_address: vendor_address
-            }) 
-          });
+             this.vendor.push({
+              prod_id: res.data.vendId,
+              vendor_name: res.data.vendName,
+              vendor_address:res.data.vendAddress
+          })
           console.log(res);
         });
         // axios({
