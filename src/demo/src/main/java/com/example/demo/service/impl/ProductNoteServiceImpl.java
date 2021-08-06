@@ -26,7 +26,7 @@ public class ProductNoteServiceImpl implements ProductNoteService {
     }
 
     @Override
-    public void updateNoteTextByNoteId(int id, String text) {
-        productNoteMapper.updateNoteTextByNoteId(id, text);
+    public void updateNoteTextByNoteId(ProductNote productNote) {
+        productNoteMapper.updateNoteTextByNoteId(productNote.getNoteId(), productNote.getNoteText());
     }
 }
