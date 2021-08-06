@@ -48,14 +48,14 @@
       <v-toolbar-title>Application</v-toolbar-title>
     </v-app-bar>
 
-    <v-main>
-      <!-- 给应用提供合适的间距 -->
-      <v-container fluid>
 
-        <!-- 如果使用 vue-router -->
-        <router-view name="main"></router-view>
-      </v-container>
-    </v-main>
+    <!-- 给应用提供合适的间距 -->
+    <v-container fluid>
+
+      <!-- 如果使用 vue-router -->
+      <router-view name="main"></router-view>
+    </v-container>
+
   </v-app>
 </template>
 
