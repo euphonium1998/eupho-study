@@ -53,30 +53,9 @@ import axios from "axios";
       validated(){
         let formData = new FormData();
         let data = {id:this.id_x,text:this.text_y};
-        // // for(var key in this.formMess){
-        // //   formData.append(key,this.formMess[key]);
-        // // }
         changeNodeId(data).then(res =>{
           console.log(res); 
         })
-        // axios.post('http://47.97.202.211:16666/productNote/updateNoteTextByNoteId' , data).then(
-        //   res =>{
-        //      console.log(res);
-        //   }
-        // )
-        // axios({
-        //   method:"post",
-        //   url: '/task6',
-        //   headers: {
-        //     "Content-Type": "multipart/form-data"
-        //   },
-        //   withCredentials:true,
-	      //   data:formData
-        // }).then((res)=>{
-        //   console.log(res);
-        // });
-        
-        
       },
     }
   }

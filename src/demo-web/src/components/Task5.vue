@@ -45,9 +45,6 @@ import {selectByPordId} from '@/api/task5'
     data () {
       return {
         valid:true,
-        // formMess:{
-        //   prod_id: '',
-        // },
         prod_id: '',
         prodRules: [
         v => !!v || 'prid_id is required',
@@ -81,25 +78,6 @@ import {selectByPordId} from '@/api/task5'
           })
           console.log(res);
         });
-        // axios({
-        //   method:"post",
-        //   url: '/task5',
-        //   headers: {
-        //     "Content-Type": "multipart/form-data"
-        //   },
-        //   withCredentials:true,
-	      //   data:formData
-        // }).then((res)=>{
-        //   this.vendor = []
-        //   res.data.forEach(element => {
-        //     this.vendor.push({
-        //       prod_id: element.prod_id,
-        //       vendor_name: element.vendor_name,
-        //       vendor_address: vendor_address
-        //     }) 
-        //   });
-        //   console.log(res);
-        // });
       },
     }
   }
