@@ -11,7 +11,7 @@ public class Vendor {
 
     private int vendId;
     private String vendName;
-    private String vendAddr;
+    private String vendAddress;
     private String vendCity;
     private String vendState;
     private String vendZip;

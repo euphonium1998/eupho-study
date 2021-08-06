@@ -10,5 +10,5 @@ public interface ProductNoteService {
 
     ProductNote selectByNoteId(int id);
 
-    void updateNoteTextByNoteId(int id, String text);
+    void updateNoteTextByNoteId(ProductNote productNote);
 }
