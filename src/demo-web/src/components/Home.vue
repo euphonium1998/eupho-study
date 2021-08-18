@@ -46,6 +46,19 @@
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
       <v-toolbar-title>Application</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn outlined
+             color="blue-grey"
+             @click="userLogout"
+      >
+        <v-icon>mdi-logout-variant</v-icon>Logout
+      </v-btn>
+      <v-btn outlined
+             color="blue-grey"
+             @click="test"
+      >
+        Test
+      </v-btn>
     </v-app-bar>
 
 
@@ -60,6 +73,10 @@
 </template>
 
 <script>
+import request from "../utils/request";
+import authentication from "../api/auth/authentication";
+import customAlert from "../api/alert/custom-alert";
+
 export default {
   name: 'Home',
   data: () => ({
@@ -82,6 +99,29 @@ export default {
       } else {
         this.$router.push('/home/task' + index.toString())
       }
+    },
+
+    jumpToLogin() {
+      this.$router.replace({ path: '/login' });
+    },
+
+    userLogout() {
+      authentication.logout().then(() => {
+        this.$router.replace({
+          path: '/login'
+        })
+      })
+    },
+
+    //用于测试接口权限认证
+    test() {
+      request({
+        url: '/demo/test',
+        method: 'get',
+      }).then(resp => {
+        console.log(resp);
+        customAlert(resp.data.message);
+      })
     }
   }
 }

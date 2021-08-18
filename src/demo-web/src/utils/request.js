@@ -2,7 +2,8 @@ import axios from "axios";
 import { Notification } from 'element-ui';
 
 const service = axios.create({
-  baseURL: 'http://47.97.202.211:16666', // url = base url + request url
+  baseURL: 'http://localhost:16666',
+  /*baseURL: 'http://47.97.202.211:16666,'*/ // url = base url + request url
   // withCredentials: true, // send cookies when cross-domain requests
   timeout: 5000 // request timeout
 })
@@ -10,12 +11,14 @@ const service = axios.create({
 // request interceptor
 service.interceptors.request.use(
 
-  config => {
-    return config
+    config => {
+    if (localStorage.token) {
+      config.headers.authorization = 'Bearer ' + localStorage.token;
+    }
+    return config;
   },
 
   error => {
-    // do something with request error
     console.log(error) // for debug
     console.log('err');
     return Promise.reject(error)
@@ -35,8 +38,10 @@ service.interceptors.response.use(
    * You can also judge the status by HTTP Status Code
    */
   response => {
-    return response
+
+    return response;
   },
+
   error => {
     console.log('err' + error) // for debug
     Notification({
