@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import {selectProductByPrice} from "../api/task1";
+import {selectProductByPrice} from "../../api/task1";
 
 export default {
   name: "Task1",

@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../components/Home.vue'
-import Login from '../components/Login.vue'
+import Login from '../views/Login.vue'
+import UserPage from "../views/UserPage";
 
 const originalPush = VueRouter.prototype.push
 
@@ -14,7 +15,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    redirect: '/home',
+    redirect: '/login',
   },
   {
     path: '/login',
@@ -35,40 +36,45 @@ const routes = [
       {
         path: 'task1',
         components: {
-          main: () => import('../components/Task1'),
+          main: () => import('../views/demoTasks/Task1'),
         },
       },
       {
         path: 'task2',
         components: {
-          main: () => import('../components/Task2'),
+          main: () => import('../views/demoTasks/Task2'),
         },
       },
       {
         path: 'task3',
         components: {
-          main: () => import('../components/Task3'),
+          main: () => import('../views/demoTasks/Task3'),
         },
       },
       {
         path: 'task4',
         components: {
-          main: () => import('../components/Task4'),
+          main: () => import('../views/demoTasks/Task4'),
         },
       },
       {
         path: 'task5',
         components: {
-          main: () => import('../components/Task5'),
+          main: () => import('../views/demoTasks/Task5'),
         },
       },
       {
         path: 'task6',
         components: {
-          main: () => import('../components/Task6'),
+          main: () => import('../views/demoTasks/Task6'),
         },
       },
-
+      {
+        path: 'user',
+        components: {
+          main: UserPage
+        }
+      },
     ]
   },
 

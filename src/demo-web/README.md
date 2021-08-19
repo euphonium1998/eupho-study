@@ -16,7 +16,7 @@ service.interceptors.request.use(
 ```
 
 ## API
-`@/api/auth/authentication.js` 封装了负责登入和登出的请求
+`@/api/auth/user.js` 封装了负责登入和登出的请求
 
 ## Custom Component
 
