@@ -51,13 +51,17 @@
              color="blue-grey"
              @click="userLogout"
       >
-        <v-icon>mdi-logout-variant</v-icon>Logout
+        <v-icon>mdi-logout-variant</v-icon>
+        Logout
       </v-btn>
       <v-btn outlined
              color="blue-grey"
              @click="test"
       >
         Test
+      </v-btn>
+      <v-btn icon @click="userInfoPage">
+        <v-icon>mdi-account</v-icon>
       </v-btn>
     </v-app-bar>
 
@@ -74,8 +78,9 @@
 
 <script>
 import request from "../utils/request";
-import authentication from "../api/auth/authentication";
 import customAlert from "../api/alert/custom-alert";
+import {logout} from "../api/auth/user";
+import {removeLocalToken} from "../utils/token";
 
 export default {
   name: 'Home',
@@ -106,7 +111,8 @@ export default {
     },
 
     userLogout() {
-      authentication.logout().then(() => {
+      logout().then(() => {
+        removeLocalToken();
         this.$router.replace({
           path: '/login'
         })
@@ -121,6 +127,12 @@ export default {
       }).then(resp => {
         console.log(resp);
         customAlert(resp.data.message);
+      })
+    },
+
+    userInfoPage() {
+      this.$router.replace({
+        path: '/home/user'
       })
     }
   }

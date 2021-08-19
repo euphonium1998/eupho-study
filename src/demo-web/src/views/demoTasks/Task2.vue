@@ -142,7 +142,7 @@
 </template>
 
 <script>
-import {saveCustomer} from "../api/task2";
+import {saveCustomer} from "../../api/task2";
 
 export default {
   name: "Task2",

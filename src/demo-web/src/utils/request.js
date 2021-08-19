@@ -1,5 +1,6 @@
 import axios from "axios";
-import { Notification } from 'element-ui';
+import {Notification} from 'element-ui';
+import customAlert from "../api/alert/custom-alert";
 
 const service = axios.create({
   baseURL: 'http://localhost:16666',
@@ -25,6 +26,7 @@ service.interceptors.request.use(
   }
 )
 
+
 // response interceptor
 service.interceptors.response.use(
   /**
@@ -38,7 +40,9 @@ service.interceptors.response.use(
    * You can also judge the status by HTTP Status Code
    */
   response => {
-
+    if (response.data.code !== 200) {
+      customAlert(response.data.message, 'error');
+    }
     return response;
   },
 
