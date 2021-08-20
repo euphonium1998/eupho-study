@@ -1,0 +1,23 @@
+server:
+  port: 8080
+#spring:
+#  security:
+#    user:
+#      name: harry
+#      password: 123
+
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.demo.entity
+
+spring:
+  datasource:
+    username: root
+    password: wdsrs20011116
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/mybatis?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT
+
+
