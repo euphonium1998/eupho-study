@@ -21,7 +21,6 @@
 
 <script>
 import {selectAllProductNote} from '@/api/demo'
-import axios from "axios";
 export default {
   name: "Example",
   data: () => ({
@@ -49,8 +48,6 @@ export default {
   methods: {
     getAllProductNote() {
       selectAllProductNote().then( res => {
-        // console.log(res.data);
-        //clear
         this.productNotes = []
         res.data.forEach(item => {
           this.productNotes.push({

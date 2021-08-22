@@ -10,8 +10,7 @@ export default new Vuex.Store({
   mutations: {},
   actions: {},
   modules: {
-    msgbar,
-    user
-
+    msgbar, // 全局消息条
+    user    // 用户全局状态模块
   }
 })

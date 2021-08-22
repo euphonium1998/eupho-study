@@ -47,6 +47,7 @@
 </template>
 
 <script>
+
 export default {
   name: "UserPage",
   data: () => ({
@@ -60,7 +61,7 @@ export default {
     avaterText() {
       return this.user.username.substr(0, 1);
     }
-  }
+  },
 }
 </script>
 

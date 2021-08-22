@@ -6,7 +6,6 @@
                 :color="color"
     >
 
-<!--        <v-icon>mdi-alert-circle</v-icon>-->
 
         {{ msg }}
 
