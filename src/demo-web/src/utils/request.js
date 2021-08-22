@@ -1,5 +1,4 @@
 import axios from "axios";
-import {Notification} from 'element-ui';
 import customAlert from "../api/alert/custom-alert";
 
 const service = axios.create({
@@ -48,11 +47,6 @@ service.interceptors.response.use(
 
   error => {
     console.log('err' + error) // for debug
-    Notification({
-      message: error.message,
-      type: 'error',
-      duration: 5 * 1000
-    })
     return Promise.reject(error)
   }
 )

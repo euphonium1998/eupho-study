@@ -1,3 +1,4 @@
+
 <template>
   <v-app id="inspire">
 
@@ -27,16 +28,11 @@
       <v-list>
         <v-list-item
             v-for="(link, index) in links"
-            :key="link[0]"
             link
-            @click="jumpToTask(index)"
+            :to="link.path"
         >
-          <v-list-item-icon>
-            <v-icon>{{ link[0] }}</v-icon>
-          </v-list-item-icon>
-
           <v-list-item-content>
-            <v-list-item-title>{{ link[1] }}</v-list-item-title>
+            <v-list-item-title>{{ link.meta.menuName }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -47,13 +43,7 @@
 
       <v-toolbar-title>Application</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn outlined
-             color="blue-grey"
-             @click="userLogout"
-      >
-        <v-icon>mdi-logout-variant</v-icon>
-        Logout
-      </v-btn>
+
       <v-btn outlined
              color="blue-grey"
              @click="test"
@@ -62,6 +52,9 @@
       </v-btn>
       <v-btn icon @click="userInfoPage">
         <v-icon>mdi-account</v-icon>
+      </v-btn>
+      <v-btn icon @click="userLogout">
+        <v-icon>mdi-logout-variant</v-icon>
       </v-btn>
     </v-app-bar>
 
@@ -79,15 +72,13 @@
 <script>
 import request from "../utils/request";
 import customAlert from "../api/alert/custom-alert";
-import {logout} from "../api/auth/user";
-import {removeLocalToken} from "../utils/token";
 
 export default {
   name: 'Home',
   data: () => ({
     cards: ['Today', 'Yesterday'],
     drawer: null,
-    links: [
+    link: [
       ['mdi-numeric-0', 'Example'],
       ['mdi-numeric-1', 'Task1'],
       ['mdi-numeric-2', 'Task2'],
@@ -96,8 +87,28 @@ export default {
       ['mdi-numeric-5', 'Task5'],
       ['mdi-numeric-6', 'Task6'],
     ],
+    links: []
   }),
+  mounted: function () {
+    this.getLinks();
+  },
   methods: {
+    // 根据全局状态中的当前用户路由表生成对应侧边栏（尚不完善，未封装）
+    getLinks() {
+      let linkList = [];
+      this.$store.state.user.permittedRouteList.forEach(route => {
+        if (route.name === 'Home' && route.children) {
+          route.children.forEach(subRoute => {
+            if (!subRoute.hasOwnProperty('sidebarHidden') || subRoute.sidebarHidden === false) {
+              linkList.push(subRoute);
+            }
+          })
+          this.links = linkList;
+          return;
+        }
+      })
+    },
+
     jumpToTask(index) {
       if (index === 0) {
         this.$router.push('/home/example')
@@ -111,11 +122,9 @@ export default {
     },
 
     userLogout() {
-      logout().then(() => {
-        removeLocalToken();
-        this.$router.replace({
-          path: '/login'
-        })
+      this.$store.dispatch('user/logout');
+      this.$router.replace({
+        path: '/login'
       })
     },
 
@@ -131,10 +140,12 @@ export default {
     },
 
     userInfoPage() {
-      this.$router.replace({
+      this.$router.push({
         path: '/home/user'
       })
     }
-  }
+  },
+
+  computed: {}
 }
 </script>
